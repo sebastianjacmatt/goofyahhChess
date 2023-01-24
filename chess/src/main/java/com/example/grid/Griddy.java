@@ -1,7 +1,7 @@
 package com.example.grid;
 //package pakke/navn/Class.java
 //npm install
-public class Griddy<T> {
+public class Griddy<T> implements IGriddy<T> {
     private int row;
     private int col;
     private T tileType;
@@ -11,5 +11,25 @@ public class Griddy<T> {
                 
             }
         }
+    }
+    @Override
+    public LocationItem<T> get(Location loc) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Boolean set(LocationItem<T> item) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Boolean isInGrid(Location loc) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Void initzialize(LocationItem<T> item) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
