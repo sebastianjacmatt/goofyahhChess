@@ -1,4 +1,4 @@
-package com.example;
+package com.example.grid;
 
 import com.example.grid.Location;
 import com.example.grid.LocationItem;
