@@ -1,7 +1,7 @@
 package com.example.grid;
 
 public interface IGriddy<T> {
-    T get(Location loc);
+    LocationItem<T> get(Location loc);
     
     Location locationOf(Object o);
     

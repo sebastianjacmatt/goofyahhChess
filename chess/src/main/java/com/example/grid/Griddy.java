@@ -46,19 +46,23 @@ public class Griddy<T> implements Iterable<LocationItem<T>> , IGriddy<T> {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 Location loc = new Location(row, col);
-                LocationItem<T> locItem = new LocationItem<T>(loc, get(loc));
+                LocationItem<T> locItem = new LocationItem<T>(loc, get(loc).getItem());
                 list.add(locItem);    
             }
         }
         return list.iterator();
     }
     @Override
-    public T get(Location loc) {
-        return grid.get(loc.row).get(loc.col).getItem();
+    public LocationItem<T> get(Location loc) {
+        return grid.get(loc.row).get(loc.col);
     }
     @Override
     public void set(LocationItem<T> item) {
-        grid.get(item.getLocation().row).set(item.getLocation().col, item);
+        if (isInGrid(item.getLocation())) {
+            grid.get(item.getLocation().row).set(item.getLocation().col, item);
+        } else {
+            throw new IllegalArgumentException("cannot set because items location is out of bounds");
+        }
     }
     @Override
     public Boolean isInGrid(Location loc) {
