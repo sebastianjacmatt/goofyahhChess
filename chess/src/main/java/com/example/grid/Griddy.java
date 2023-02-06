@@ -3,13 +3,10 @@ package com.example.grid;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-//package pakke/navn/Class.java
-//npm install
 public class Griddy<T> implements Iterable<LocationItem<T>> , IGriddy<T> {
     private int rows;
     private int cols;
     private ArrayList<ArrayList<LocationItem<T>>> grid;
-    //TODO change underlying grid structure from a two dimensional array to a one dimensinal array
     public Griddy (int rows, int cols, T init){
         this.rows = rows;
         this.cols = cols;
@@ -82,11 +79,27 @@ public class Griddy<T> implements Iterable<LocationItem<T>> , IGriddy<T> {
     }
     @Override
     public void initzialize(LocationItem<T> item) {
-        
+        for (ArrayList<LocationItem<T>> arrayList : grid) {
+            for (int i = 0; i < cols; i++) {
+                arrayList.set(i, item);
+            }
+        }
     }
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        StringBuilder builder = new StringBuilder();
+        for (ArrayList<LocationItem<T>> arrayList : grid) {
+            for (int i = 0; i < cols; i++) {
+                if (arrayList.get(i).getItem()==null) {
+                    builder.append("null");
+                } else {
+                    builder.append("|");
+                    builder.append(arrayList.get(i).getItem().toString());
+                    builder.append("|");
+                }
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 }

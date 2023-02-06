@@ -15,6 +15,6 @@ public class LocationItem<T> {
     }
     @Override
     public String toString() {
-        return loc.toString().concat(item.toString());
+        return item.toString();
     }
 }

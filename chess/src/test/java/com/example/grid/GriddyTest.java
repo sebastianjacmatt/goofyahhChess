@@ -86,18 +86,18 @@ public class GriddyTest {
 
     @Test
     public void locationOfTest(){
-           
+        //TODO implement locationOfTest
     }
     @Test
     public void initzializeTest(){
-        
+        //TODO implement initzializeTest
     }
     @Test
     public void isInGridTest(){
-        
+        //TODO implement isInGridTest
     }
     @Test
     public void iteratorTest(){
-        
+        //TODO implement iteratorTest
     }
 }
