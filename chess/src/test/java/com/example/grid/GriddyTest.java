@@ -2,6 +2,9 @@ package com.example.grid;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Random;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -85,13 +88,40 @@ public class GriddyTest {
     }
 
     @Test
-    public void locationOfTest(){
-        //TODO implement locationOfTest
+    public void initzializeTest(){
+        Griddy<Boolean> grid = new Griddy<Boolean>(8, 8);
+        Griddy<Boolean> initGrid = new Griddy<Boolean>(8, 8, false);
+
+        LocationItem<Boolean> item = new LocationItem<Boolean>(new Location(0, 0), false);
+
+        grid.initzialize(item);
+
+        for (LocationItem<Boolean> locationItem : grid) {
+            assertFalse(locationItem.getItem().equals(true));
+        }
+        
+        initGrid.initzialize(item);
+        for (LocationItem<Boolean> locationItem : initGrid) {
+            assertFalse(locationItem.getItem().equals(false));
+        }
+        for (LocationItem<Boolean> locationItem : initGrid) {
+            assertFalse(locationItem.getItem().equals(true));
+        }
     }
     @Test
-    public void initzializeTest(){
-        //TODO implement initzializeTest
-    }
+    public void locationOfTest(){
+        Griddy<Boolean> grid = new Griddy<Boolean>(8, 8);
+        Griddy<Boolean> initGrid = new Griddy<Boolean>(8, 8, false);
+
+        grid.initzialize(new LocationItem<Boolean>(new Location(0, 0), false));
+        initGrid.initzialize(new LocationItem<Boolean>(new Location(0, 0), false));
+        
+        Random r1 = new Random();
+        Random r2 = new Random();
+
+        grid.set(new LocationItem<Boolean>(new Location(r1.nextInt(7), r2.nextInt(7)), true));
+        initGrid.set(new LocationItem<Boolean>(new Location(r1.nextInt(7), r2.nextInt(7)), true));
+    }  
     @Test
     public void isInGridTest(){
         //TODO implement isInGridTest
