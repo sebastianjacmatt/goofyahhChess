@@ -90,22 +90,21 @@ public class GriddyTest {
     @Test
     public void initzializeTest(){
         Griddy<Boolean> grid = new Griddy<Boolean>(8, 8);
-        Griddy<Boolean> initGrid = new Griddy<Boolean>(8, 8, false);
+        Griddy<Boolean> initGrid = new Griddy<Boolean>(8, 8, true);
 
         LocationItem<Boolean> item = new LocationItem<Boolean>(new Location(0, 0), false);
 
         grid.initzialize(item);
-
         for (LocationItem<Boolean> locationItem : grid) {
-            assertFalse(locationItem.getItem().equals(true));
+            assertTrue(locationItem.getItem().equals(false));
         }
-        
-        initGrid.initzialize(item);
+
         for (LocationItem<Boolean> locationItem : initGrid) {
-            assertFalse(locationItem.getItem().equals(false));
+            assertTrue(locationItem.getItem().equals(true));
         }
+        initGrid.initzialize(item);        
         for (LocationItem<Boolean> locationItem : initGrid) {
-            assertFalse(locationItem.getItem().equals(true));
+            assertTrue(locationItem.getItem().equals(false));
         }
     }
     @Test
