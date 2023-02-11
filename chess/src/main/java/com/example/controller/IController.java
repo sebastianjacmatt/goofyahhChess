@@ -1,5 +1,5 @@
 package com.example.controller;
 
-public interface IController {
+public interface IController  {
     
 }

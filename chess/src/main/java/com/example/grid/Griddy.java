@@ -85,6 +85,16 @@ public class Griddy<T> implements Iterable<LocationItem<T>> , IGriddy<T> {
             }
         }
     }
+
+    @Override 
+    public int getRows(){
+        return this.rows;
+    }
+    @Override
+    public int getCols(){
+        return this.cols;
+    }  
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
