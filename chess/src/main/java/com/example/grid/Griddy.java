@@ -38,13 +38,13 @@ public class Griddy<T> implements Iterable<LocationItem<T>> , IGriddy<T> {
     
 
     @Override
-    public Iterator<LocationItem<T>> iterator() {
+    public Iterator<T> iterator() {
         ArrayList<LocationItem<T>> list = new ArrayList<LocationItem<T>>();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 Location loc = new Location(row, col);
                 LocationItem<T> locItem = new LocationItem<T>(loc, get(loc).getItem());
-                list.add(locItem);    
+                list.add(loc.item);    
             }
         }
         return list.iterator();

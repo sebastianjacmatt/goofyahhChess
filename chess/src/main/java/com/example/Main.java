@@ -9,7 +9,10 @@ import com.example.controller.Controller;
 import com.example.grid.Griddy;
 import com.example.grid.Location;
 import com.example.grid.LocationItem;
+import com.example.model.ChessBoard;
+import com.example.model.Model;
 import com.example.model.Tile;
+import com.example.model.pieces.Piece;
 import com.example.view.GamePanel;
 import com.example.view.View;
 
@@ -26,9 +29,9 @@ public class Main
         window.setResizable(true);
         window.setTitle("Chess");
         
-        Tile testTile = new Tile(Color.BLACK);
-        Griddy<Tile> grid = new Griddy<Tile>(8, 8, testTile);
-        View view = new View(grid);
+        Tile<Piece> testTile = new Tile<Piece>(Color.BLACK);
+        Model model = new Model(new ChessBoard(8, 8, testTile));
+        View view = new View(model);
         view.setPreferredSize(new Dimension(512,512));
 
         window.add(view);

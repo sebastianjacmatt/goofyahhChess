@@ -9,6 +9,7 @@ import com.example.grid.Location;
 import com.example.grid.LocationItem;
 import com.example.model.Model;
 import com.example.model.Tile;
+import com.example.model.pieces.Piece;
 
 import java.awt.Graphics;
 import java.util.Iterator;
@@ -20,10 +21,10 @@ import java.awt.Font;
 public class View extends JComponent implements IView {
     
     Graphics g;
-    Griddy<Tile> grid;
+    Model model;
 
-    public View(Griddy<Tile> grid){
-        this.grid = grid;
+    public View(Model model){
+        this.model = model;
     }
     @Override
     public void paint(Graphics canvas) {
@@ -34,10 +35,10 @@ public class View extends JComponent implements IView {
         drawChessWithRightBottomPaddingBoard(graphics, x, y, width-padding, height-padding, padding);
     }
     private void drawChessWithRightBottomPaddingBoard(Graphics g, int x , int y , int height , int widht, int padding){
-        for (LocationItem<Tile> locationItem : grid) {
+        for (LocationItem<Tile<Piece>> locationItem : model.modelIterator()) {
             int row = locationItem.getLocation().row;
             int col = locationItem.getLocation().col;
-            Tile tile = locationItem.getItem();
+            Tile<Piece> tile = locationItem.getItem();
             
             // if tile is not initialized to color, it will automatically set the tile to white
             Color color;
@@ -47,11 +48,11 @@ public class View extends JComponent implements IView {
                 color = tile.color;
             }
 
-            int tileX = x + col * widht / grid.getCols();
-            int tileY = y + row * height / grid.getRows();
+            int tileX = x + col * widht / model.getCols();
+            int tileY = y + row * height / model.getRows();
 
-            int nextTileX = x + (col + 1) * widht / grid.getCols();
-            int nextTileY = y + (row + 1) * height / grid.getRows();
+            int nextTileX = x + (col + 1) * widht / model.getCols();
+            int nextTileY = y + (row + 1) * height / model.getRows();
 
             int tileWidth = nextTileX - tileX;
             int tileHeight = nextTileY - tileY;
